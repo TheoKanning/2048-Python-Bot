@@ -1,4 +1,4 @@
-import ImageGrab
+from PIL import ImageGrab
 import os
 import time
 import win32api, win32con
@@ -125,7 +125,7 @@ def getSquareNumbers():
         rgb = im.getpixel(SQUARE_COORDS[sq])
         val = getNumberFromRGB(rgb)
         if(val == -1):
-            print "Unknown RGB ",rgb
+            print ("Unknown RGB ",rgb)
 
         #store in board
         board[sq%4][sq//4] = val
@@ -325,12 +325,12 @@ def copyBoard(board1, board2):
         board2[x%4][x//4] = board2[x%4][x//4]
 
 def printBoard(array,text):
-    print text
-    print array[0][0], " ", array[1][0], " ",array[2][0]," ",array[3][0]
-    print array[0][1], " ", array[1][1], " ",array[2][1]," ",array[3][1]
-    print array[0][2], " ", array[1][2], " ",array[2][2]," ",array[3][2]
-    print array[0][3], " ", array[1][3], " ",array[2][3]," ",array[3][3]
-    print " "
+    print (text)
+    print (array[0][0], " ", array[1][0], " ",array[2][0]," ",array[3][0])
+    print (array[0][1], " ", array[1][1], " ",array[2][1]," ",array[3][1])
+    print (array[0][2], " ", array[1][2], " ",array[2][2]," ",array[3][2])
+    print (array[0][3], " ", array[1][3], " ",array[2][3]," ",array[3][3])
+    print (" ")
 
 #searches to the given depth, returning the best move and score
 def search(array, depth):
@@ -466,14 +466,14 @@ def evaluateBoard(array):
         
     
 def main():
-    print "Starting in 3"
+    print ("Starting in 3")
     time.sleep(1)
-    print "2"
+    print ("2")
     time.sleep(1)
-    print "1"
+    print ("1")
     time.sleep(1)
-    print "Start"
-    print " "
+    print ("Start")
+    print (" ")
     
     board[0][0] = 256
     board[0][1] = 8
@@ -500,13 +500,13 @@ def main():
 
         (move, score, pv) = playerSearch(board,5,0)
 
-        print "Move: ", move, " Score: ", score
+        print ("Move: ", move, " Score: ", score)
 
-        print "PV: ", pv[::],"\n\n"
+        print ("PV: ", pv[::],"\n\n")
 
         (left, score) = makeMove(board, 'left')
         #printBoard(left, 'Left')
-        #print "Move score: ", score
+        #print ("Move score: ", score)
         
         arrowKey(move)
         time.sleep(0.25)
